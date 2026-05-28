@@ -1,0 +1,28 @@
+# ===== Build =====
+target/
+
+# ===== IDE =====
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+*.swp
+*~
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Maven =====
+*.jar
+*.war
+*.ear
+
+# ===== Logs =====
+*.log
+
+# ===== Docs (trabalho escrito - não versionar) =====
+docs/

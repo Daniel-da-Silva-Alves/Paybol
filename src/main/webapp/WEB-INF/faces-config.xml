@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    faces-config.xml - Arquivo de configuração do JavaServer Faces (JSF).
+    
+    No JSF 4.0 com CDI, este arquivo pode ficar praticamente vazio,
+    pois os beans são registrados via anotações (@Named, @SessionScoped).
+    
+    Mantemos este arquivo para compatibilidade e como ponto de
+    configuração caso seja necessário adicionar conversores,
+    validadores ou regras de navegação no futuro.
+-->
+<faces-config xmlns="https://jakarta.ee/xml/ns/jakartaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                                  https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd"
+              version="4.0">
+</faces-config>

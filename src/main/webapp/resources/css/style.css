@@ -1,0 +1,386 @@
+/* ========================================
+   Paybol - CSS Customizado
+   Complementa o tema PrimeFaces (Saga)
+   ======================================== */
+
+/* ===== Reset e Base ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f4c2e 0%, #1a6b3c 50%, #2d8a4e 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Layout Principal ===== */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ===== Header ===== */
+.header {
+    text-align: center;
+    padding: 30px 20px 20px;
+    color: #ffffff;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.header .logo {
+    width: 234px;
+    height: auto;
+    display: block;
+    margin: 0 auto 12px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.logo-small {
+    width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto 16px;
+    opacity: 0.6;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin: 8px 0 0;
+    font-weight: 300;
+}
+
+/* ===== Cards de Resumo ===== */
+.resumo-cards {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0 30px;
+}
+
+.resumo-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 20px 28px;
+    text-align: center;
+    color: #ffffff;
+    min-width: 160px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resumo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.resumo-card .numero {
+    font-size: 2.2rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1.2;
+}
+
+.resumo-card .label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-top: 4px;
+    display: block;
+}
+
+.resumo-card.pagos {
+    border-color: rgba(72, 199, 142, 0.5);
+    background: rgba(72, 199, 142, 0.2);
+}
+
+.resumo-card.pendentes {
+    border-color: rgba(255, 183, 77, 0.5);
+    background: rgba(255, 183, 77, 0.2);
+}
+
+.resumo-card.arrecadado {
+    border-color: rgba(100, 181, 246, 0.5);
+    background: rgba(100, 181, 246, 0.2);
+}
+
+/* ===== Painel Principal ===== */
+.painel-principal {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.painel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #fafafa;
+}
+
+.painel-header h2 {
+    margin: 0;
+    color: #2d3436;
+    font-size: 1.3rem;
+}
+
+.painel-body {
+    padding: 24px;
+}
+
+/* ===== Badges de Status ===== */
+.badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.badge:hover {
+    opacity: 0.85;
+}
+
+.badge-pago {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.badge-pendente {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* ===== Tabela ===== */
+.ui-datatable {
+    border: none !important;
+}
+
+.ui-datatable .ui-datatable-header {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.ui-datatable th {
+    background: #f8f9fa !important;
+    color: #495057 !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 14px 16px !important;
+    border-bottom: 2px solid #dee2e6 !important;
+}
+
+.ui-datatable td {
+    padding: 14px 16px !important;
+    vertical-align: middle !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.ui-datatable tbody tr:hover {
+    background: #f8f9fa !important;
+}
+
+/* ===== Botões ===== */
+.btn-novo {
+    background: linear-gradient(135deg, #48c78e, #3cba83) !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 10px 24px !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+    box-shadow: 0 4px 12px rgba(72, 199, 142, 0.3) !important;
+}
+
+.btn-novo:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(72, 199, 142, 0.4) !important;
+}
+
+.btn-editar {
+    background: #3498db !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    margin-right: 6px !important;
+    transition: background 0.2s !important;
+}
+
+.btn-editar:hover {
+    background: #2980b9 !important;
+}
+
+.btn-excluir {
+    background: #e74c3c !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    transition: background 0.2s !important;
+}
+
+.btn-excluir:hover {
+    background: #c0392b !important;
+}
+
+.btn-salvar {
+    background: linear-gradient(135deg, #48c78e, #3cba83) !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 12px 32px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    box-shadow: 0 4px 12px rgba(72, 199, 142, 0.3) !important;
+}
+
+.btn-cancelar {
+    background: #95a5a6 !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 10px !important;
+    padding: 12px 32px !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+}
+
+/* ===== Formulários ===== */
+.form-container {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container h2 {
+    color: #2d3436;
+    margin: 0 0 30px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group .ui-selectonemenu {
+    width: 100% !important;
+    border-radius: 10px !important;
+    border: 2px solid #e0e0e0 !important;
+    padding: 10px 14px !important;
+    font-size: 1rem !important;
+    transition: border-color 0.3s !important;
+}
+
+.form-group input:focus,
+.form-group .ui-selectonemenu:focus {
+    border-color: #48c78e !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(72, 199, 142, 0.15) !important;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* ===== Valor Monetário ===== */
+.valor {
+    font-weight: 600;
+    color: #2d3436;
+}
+
+/* ===== Lista Vazia ===== */
+.lista-vazia {
+    text-align: center;
+    padding: 60px 20px;
+    color: #95a5a6;
+}
+
+.lista-vazia .emoji-grande {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.lista-vazia p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* ===== Mensagens ===== */
+.ui-messages {
+    margin-bottom: 20px !important;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 12px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .resumo-cards {
+        gap: 10px;
+    }
+
+    .resumo-card {
+        min-width: 100px;
+        padding: 14px 16px;
+    }
+
+    .resumo-card .numero {
+        font-size: 1.6rem;
+    }
+
+    .form-container {
+        padding: 24px;
+    }
+
+    .painel-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+}

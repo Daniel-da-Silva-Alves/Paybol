@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    beans.xml - Arquivo de configuração do CDI (Contexts and Dependency Injection).
+    
+    Este arquivo ativa o mecanismo de CDI na aplicação.
+    Com bean-discovery-mode="all", o CDI escaneia automaticamente
+    todas as classes do projeto e registra aquelas anotadas com
+    @Named, @SessionScoped, @RequestScoped, etc.
+-->
+<beans xmlns="https://jakarta.ee/xml/ns/jakartaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                           https://jakarta.ee/xml/ns/jakartaee/beans_4_0.xsd"
+       version="4.0"
+       bean-discovery-mode="all">
+</beans>

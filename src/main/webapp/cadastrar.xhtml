@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!--
+    cadastrar.xhtml - Página de cadastro de novo jogador
+    
+    Formulário com campos: Nome, Telefone, Valor e Status de Pagamento.
+    Utiliza componentes PrimeFaces para inputs estilizados.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Paybol - Novo Jogador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+
+<h:body>
+    <div class="container">
+
+        <!-- ===== Header ===== -->
+        <div class="header">
+            <h:graphicImage name="images/paybol.PNG" styleClass="logo" alt="Paybol Logo" />
+        </div>
+
+        <!-- ===== Formulário ===== -->
+        <div class="form-container">
+            <h2>📝 Novo Jogador</h2>
+
+            <h:form id="formCadastrar">
+                <p:messages id="msgs" showDetail="true" closable="true" />
+
+                <!-- Campo: Nome -->
+                <div class="form-group">
+                    <h:outputLabel for="nome" value="Nome do Jogador *" />
+                    <p:inputText id="nome"
+                                 value="#{jogadorBean.jogador.nome}"
+                                 required="true"
+                                 requiredMessage="O nome é obrigatório"
+                                 maxlength="100"
+                                 placeholder="Ex: João Silva" />
+                </div>
+
+                <!-- Campo: Telefone -->
+                <div class="form-group">
+                    <h:outputLabel for="telefone" value="Telefone / WhatsApp" />
+                    <p:inputText id="telefone"
+                                 value="#{jogadorBean.jogador.telefone}"
+                                 maxlength="20"
+                                 placeholder="Ex: (92) 99999-9999" />
+                </div>
+
+                <!-- Campo: Valor -->
+                <div class="form-group">
+                    <h:outputLabel for="valor" value="Valor (R$) *" />
+                    <p:inputNumber id="valor"
+                                   value="#{jogadorBean.jogador.valor}"
+                                   symbol="R$ "
+                                   symbolPosition="p"
+                                   decimalSeparator=","
+                                   thousandSeparator="."
+                                   minValue="0"
+                                   required="true"
+                                   requiredMessage="O valor é obrigatório" />
+                </div>
+
+                <!-- Campo: Status de Pagamento -->
+                <div class="form-group">
+                    <h:outputLabel for="status" value="Status de Pagamento" />
+                    <p:selectOneMenu id="status"
+                                     value="#{jogadorBean.jogador.statusPagamento}">
+                        <f:selectItems value="#{jogadorBean.statusPagamentoValues}"
+                                       var="s"
+                                       itemLabel="#{s.descricao}"
+                                       itemValue="#{s}" />
+                    </p:selectOneMenu>
+                </div>
+
+                <!-- Botões -->
+                <div class="form-actions">
+                    <p:commandButton value="💾 Salvar"
+                                     action="#{jogadorBean.salvar}"
+                                     styleClass="btn-salvar"
+                                     ajax="false"
+                                     update="msgs" />
+
+                    <p:button value="❌ Cancelar"
+                              outcome="index"
+                              styleClass="btn-cancelar" />
+                </div>
+
+            </h:form>
+        </div>
+
+    </div>
+</h:body>
+</html>

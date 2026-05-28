@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<!--
+    index.xhtml - Página principal do Paybol
+    
+    Exibe a lista de jogadores em uma DataTable do PrimeFaces,
+    com cards de resumo (total, pagos, pendentes, arrecadado)
+    e ações de CRUD (editar, excluir, alternar status).
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="jakarta.faces.facelets">
+
+<h:head>
+    <title>Paybol - Lista da Pelada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <h:outputStylesheet name="css/style.css" />
+</h:head>
+
+<h:body>
+    <div class="container">
+
+        <!-- ===== Header ===== -->
+        <div class="header">
+            <h:graphicImage name="images/paybol.PNG" styleClass="logo" alt="Paybol Logo" />
+        </div>
+
+        <!-- ===== Cards de Resumo ===== -->
+        <div class="resumo-cards">
+            <div class="resumo-card">
+                <span class="numero">#{jogadorBean.jogadores.size()}</span>
+                <span class="label">Jogadores</span>
+            </div>
+            <div class="resumo-card pagos">
+                <span class="numero">#{jogadorBean.totalPagos}</span>
+                <span class="label">Pagos ✅</span>
+            </div>
+            <div class="resumo-card pendentes">
+                <span class="numero">#{jogadorBean.totalPendentes}</span>
+                <span class="label">Pendentes ⏳</span>
+            </div>
+            <div class="resumo-card arrecadado">
+                <span class="numero">
+                    R$ <h:outputText value="#{jogadorBean.totalArrecadado}">
+                        <f:convertNumber type="number" minFractionDigits="2" maxFractionDigits="2" />
+                    </h:outputText>
+                </span>
+                <span class="label">Arrecadado 💰</span>
+            </div>
+        </div>
+
+        <!-- ===== Painel da Lista ===== -->
+        <div class="painel-principal">
+            <div class="painel-header">
+                <h2>📋 Lista de Jogadores</h2>
+                <h:form id="formNovo">
+                    <p:commandButton value="+ Novo Jogador"
+                                     action="#{jogadorBean.novo}"
+                                     styleClass="btn-novo"
+                                     ajax="false" />
+                </h:form>
+            </div>
+
+            <div class="painel-body">
+                <h:form id="formLista">
+                    <!-- Tabela de jogadores (exibida quando há jogadores) -->
+                    <p:dataTable id="tabelaJogadores"
+                                 value="#{jogadorBean.jogadores}"
+                                 var="j"
+                                 emptyMessage=""
+                                 rendered="#{not empty jogadorBean.jogadores}"
+                                 rowHover="true"
+                                 stripedRows="true">
+
+                        <p:column headerText="Nome" sortBy="#{j.nome}">
+                            <h:outputText value="#{j.nome}" />
+                        </p:column>
+
+                        <p:column headerText="Telefone">
+                            <h:outputText value="#{j.telefone}" />
+                        </p:column>
+
+                        <p:column headerText="Valor" sortBy="#{j.valor}">
+                            <h:outputText value="#{j.valor}" styleClass="valor">
+                                <f:convertNumber type="currency" currencySymbol="R$ " 
+                                                 minFractionDigits="2" maxFractionDigits="2" />
+                            </h:outputText>
+                        </p:column>
+
+                        <p:column headerText="Status" sortBy="#{j.statusPagamento}">
+                            <p:commandLink action="#{jogadorBean.alternarStatus(j)}"
+                                           update="@form"
+                                           styleClass="badge #{j.statusPagamento eq 'PAGO' ? 'badge-pago' : 'badge-pendente'}"
+                                           title="Clique para alternar status">
+                                <h:outputText value="#{j.statusPagamento.descricao}" />
+                            </p:commandLink>
+                        </p:column>
+
+                        <p:column headerText="Ações" style="width: 160px; text-align: center;">
+                            <p:commandButton icon="pi pi-pencil"
+                                             action="#{jogadorBean.editar(j)}"
+                                             styleClass="btn-editar"
+                                             title="Editar"
+                                             ajax="false" />
+
+                            <p:commandButton icon="pi pi-trash"
+                                             action="#{jogadorBean.excluir(j)}"
+                                             styleClass="btn-excluir"
+                                             title="Excluir"
+                                             update="@form"
+                                             onclick="return confirm('Tem certeza que deseja excluir #{j.nome}?');" />
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <!-- Mensagem quando a lista está vazia -->
+                    <div class="lista-vazia" style="#{empty jogadorBean.jogadores ? '' : 'display: none;'}">
+                        <h:graphicImage name="images/paybol.PNG" styleClass="logo-small" alt="Paybol" />
+                        <p>Nenhum jogador cadastrado ainda.<br/>
+                           Clique em <strong>"+ Novo Jogador"</strong> para começar!</p>
+                    </div>
+
+                </h:form>
+            </div>
+        </div>
+
+    </div>
+</h:body>
+</html>
